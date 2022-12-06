@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","width":265,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言作为一个Python练习时长两分半的个人练习生，显然我得整些活出来。咳咳，经过整整长达两秒半的深思熟虑，我决定做一个病毒。 然后我就在Github上新建了一个仓库，万里征程第一步哈。这难道不是废话么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自制病毒 Virus-1.0 发布">
+<meta property="og:url" content="http://example.com/post002/index.html">
+<meta property="og:site_name" content="刘天硕的博客">
+<meta property="og:description" content="前言作为一个Python练习时长两分半的个人练习生，显然我得整些活出来。咳咳，经过整整长达两秒半的深思熟虑，我决定做一个病毒。 然后我就在Github上新建了一个仓库，万里征程第一步哈。这难道不是废话么">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/post002/1.png">
+<meta property="article:published_time" content="2022-11-30T17:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-06T04:00:10.897Z">
+<meta property="article:author" content="刘天硕">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="病毒">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/post002/1.png">
+
+
+<link rel="canonical" href="http://example.com/post002/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/post002/","path":"post002/","title":"自制病毒 Virus-1.0 发布"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>自制病毒 Virus-1.0 发布 | 刘天硕的博客</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">刘天硕的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%8C%85"><span class="nav-number">5.</span> <span class="nav-text">打包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F"><span class="nav-number">6.</span> <span class="nav-text">结束</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="刘天硕"
+      src="/images/avatar.ico">
+  <p class="site-author-name" itemprop="name">刘天硕</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">博客</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liutianshuo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liutianshuo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liutianshuo2010@163.com" title="E-Mail → mailto:liutianshuo2010@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/post002/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.ico">
+      <meta itemprop="name" content="刘天硕">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘天硕的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="自制病毒 Virus-1.0 发布 | 刘天硕的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          自制病毒 Virus-1.0 发布
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-01 01:00:00" itemprop="dateCreated datePublished" datetime="2022-12-01T01:00:00+08:00">2022-12-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-06 12:00:10" itemprop="dateModified" datetime="2022-12-06T12:00:10+08:00">2022-12-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为一个<code>Python</code>练习时长两分半的个人练习生，显然我得整些活出来。咳咳，经过整整长达两秒半的深思熟虑，我决定做一个病毒。</p>
+<p>然后我就在<code>Github</code>上新建了一个仓库，万里征程第一步哈。<del>这难道不是废话么</del></p>
+<span id="more"></span>
+
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>我先思考一下，这个病毒需要什么功能？先说好，我暂时不想给它添加什么诸如吃<code>MBR</code>之类的的高级玩意儿。我的设想如下：</p>
+<ul>
+<li>无限弹窗</li>
+<li>在后台播放音乐</li>
+<li>在以上两项开始前，先来一波弹窗调戏</li>
+<li>在代码中夹杂私货</li>
+</ul>
+<p>理论存在，实践开始。打开<code>Visual Studio Code</code>！</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><blockquote>
+<p>我只是一个 12 岁的小学生，代码水平一般。如果有什么问题，求轻喷~</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这是由开发者 Liu Tianshuo 于 12 岁时开发的一个恶搞程序</span></span><br><span class="line"><span class="comment"># 版本 1.0</span></span><br><span class="line"><span class="comment"># 程序仅为恶搞，结束该程序进程（如重启、使用任务管理器终止等）即可消除本程序对电脑的一切影响</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 引用第三方库</span></span><br><span class="line"><span class="keyword">import</span> Play_mp3</span><br><span class="line"><span class="keyword">import</span> webbrowser</span><br><span class="line"><span class="keyword">import</span> tkinter</span><br><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</span><br><span class="line"></span><br><span class="line"><span class="comment"># 弹出信息弹窗</span></span><br><span class="line">tkinter.messagebox.showinfo(<span class="string">&#x27;Virus&#x27;</span>,<span class="string">&#x27;嗨嗨嗨！&#x27;</span>)</span><br><span class="line">tkinter.messagebox.showinfo(<span class="string">&#x27;Virus&#x27;</span>,<span class="string">&#x27;我很高兴，你的电脑马上就要无了。&#x27;</span>)</span><br><span class="line">tkinter.messagebox.showinfo(<span class="string">&#x27;Virus&#x27;</span>,<span class="string">&#x27;准备好了吗？&#x27;</span>)</span><br><span class="line">tkinter.messagebox.showinfo(<span class="string">&#x27;Virus&#x27;</span>,<span class="string">&#x27;尽情欣赏吧！&#x27;</span>)</span><br><span class="line">tkinter.messagebox.showinfo(<span class="string">&#x27;Virus&#x27;</span>,<span class="string">&#x27;三、二、一、开始！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 无限浏览器打开窗口</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aa</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        webbrowser.<span class="built_in">open</span>(<span class="string">&quot;liutianshuo.cn&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 无限播放音乐</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ab</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        Play_mp3.play(<span class="string">&quot;https://software-resources.oss-cn-beijing.aliyuncs.com/virus/virus-1.0/music-1.mp3&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 无限计算 114514、1919810 进行各种数学运算后的结果（悲）</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ac</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        a = <span class="number">114514</span></span><br><span class="line">        b = <span class="number">1919810</span></span><br><span class="line">        c = a + b</span><br><span class="line">        d = a - b</span><br><span class="line">        e = a * b</span><br><span class="line">        f = a / b</span><br><span class="line">        g = a ** b</span><br><span class="line">        h = a // b</span><br><span class="line">        i = a % b</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        <span class="built_in">print</span>(b)</span><br><span class="line">        <span class="built_in">print</span>(c)</span><br><span class="line">        <span class="built_in">print</span>(d)</span><br><span class="line">        <span class="built_in">print</span>(e)</span><br><span class="line">        <span class="built_in">print</span>(f)</span><br><span class="line">        <span class="built_in">print</span>(g)</span><br><span class="line">        <span class="built_in">print</span>(h)</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上三项同时执行</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    Thread(target = aa).start()</span><br><span class="line">    Thread(target = ab).start()</span><br><span class="line">    Thread(target = ac).start()</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我首先引用了<code>Play_mp3</code>这个第三方库，用它来实现音乐的播放。用它是因为最傻瓜无脑，不会出一些乱七八糟的问题。是的你没看错，我甚至为此开了一个<code>OSS</code>。<del>为什么不直接放到程序根目录呢？因为打包<code>.EXE</code>后找不到文件</del></p>
+<p>接着引用了<code>webbrowser</code>这个库来实现无限弹窗。大家可能会感到不解，用<code>Tk</code>不行？我用过<code>Tk</code>，发现这玩意震撼是震撼，但一点不卡（我希望在程序运行时让电脑变得卡顿）。所以，最后就用了<code>webbrowser</code>。屏幕上浏览器窗口一堆是不是非常痛？嘻嘻！</p>
+<p><code>tkinter</code>和<code>tkinter.messagebox</code>这两个就不用说了吧？管最开始的弹窗调戏的。</p>
+<p><code>thread</code>是负责实现<code>Python</code>程序多线程执行命令的。这里我用它来使上面三句命令同时执行。</p>
+<p>前面的一堆<code>tkinter.messagebox.showinfo</code>先弹出用于调戏的弹窗；<code>webbrowser.open</code>让浏览器打开指定网址；<code>Play_mp3.play</code>来播放音乐，补充一点，这个音乐是银行快乐曲 Unwelcome School （银行：什么 13 动静）；给<code>a</code>和<code>b</code>分别赋值<code>114514</code>和<code>1919810</code>再让电脑计算，这同时也可以消耗一部分电脑性能，啊啊啊啊啊啊啊！（悲）</p>
+<p>别忘了给这些套个<code>def</code>，再套个<code>while True:</code>，最后加上<code>if __name__ == &#39;__main__&#39;:</code>，这样就能实现代码同时执行+无限循环执行啦！</p>
+<hr>
+<p>回顾一下最初定下的目标，全部完成了吗？</p>
+<ul>
+<li>无限弹窗</li>
+<li>在后台播放音乐</li>
+<li>在以上两项开始前，先来一波弹窗调戏</li>
+<li>在代码中夹杂私货</li>
+</ul>
+<p>完美！<del>在代码中夹杂私货这项完成的最好</del></p>
+<h1 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h1><p>刚准备关掉电脑，我就发现一个非常严重的问题：</p>
+<p>这是一个恶搞病毒。当我把它发给朋友时也不能发<code>.PY</code>源文件啊！那样的话，我要先让他安装<code>Python</code>再换源最后<code>pip install</code>安装一堆第三方库！显然我要先打包成<code>.EXE</code>才能保证邪恶计划的顺利实施。啊对对对！</p>
+<p>问了问万能的必应，发现解决办法还是有的，且非常完美。使用<code>pyinstaller</code>即可完美解决。</p>
+<p>首先，先安装<code>pyinstaller</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyinstaller</span><br></pre></td></tr></table></figure>
+
+<p>然后，在<code>.PY</code>源文件的根目录打开你系统的终端。准备好一个<code>.ICO</code>的程序图标后执行以下命令，记得文件名要随机应变：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller -F -i 图标.ico 程序.py</span><br></pre></td></tr></table></figure>
+
+<p>OK！不过打包后为什么这么大……</p>
+<p><img src="/post002/1.png"></p>
+<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>这篇文章的字数对一个小学生真不算少，真的要累死了啊。其实最累的还当属校正大小写，有些地方比如文件后缀也一直有争议。到底是<code>.py</code>还是<code>.PY</code>？网上有的说这是缩写，要大写；也有的说小写也行。我就这么想来想去。最后，我干脆按数学判断题的思路来判断，认为这是缩写，要大写。Emm……（典型的强迫症晚期）</p>
+<p>该项目已上线<code>Github</code>，感兴趣的全民制作人们可以去<a target="_blank" rel="noopener" href="https://github.com/liutianshuo/virus">看一下</a>。<del>啊对了，看在我这么辛苦的份上，给波<code>Star</code>行吗</del></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E7%97%85%E6%AF%92/" rel="tag"># 病毒</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post001/" rel="prev" title="你好，世界！">
+                  <i class="fa fa-chevron-left"></i> 你好，世界！
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘天硕</span>
+</div>
+  <div class="powered-by">
+  </div><script color="0,0,0" opacity="0.5" zIndex="-1" count="60" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
